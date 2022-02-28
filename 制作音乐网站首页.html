@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>制作音乐网站首页</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <style>
+        .col-md-8, .col-md-2, .col-md-6 {
+            outline: 1px solid #999;
+            padding: 0;
+        }
+
+        .col-md-2 {
+            background-color: #ff3300;
+            text-align: center;
+            height: 320px;
+        }
+
+        .col-md-2 a {
+            color: blue;
+            font-weight: bold;
+            text-shadow: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <img src="img/music_banner.png" width="100%">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 offset-md-2">
+            <a href="#">首页</a><br>
+            <a href="#">古典音乐</a><br>
+            <a href="#">现代流行</a><br>
+            <a href="#">爵士音乐</a><br>
+            <a href="#">70后音乐</a><br>
+            <a href="#">80后音乐</a><br>
+            <a href="#">90后音乐</a><br>
+        </div>
+        <div class="col-md-6" style="text-align: center;display: flex;flex-direction: column;justify-content: center;">
+            <p>这里是内容</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 offset-md-2" style="text-align: center;padding-top: 10px">
+            <p>|联系我们|关于我们|</p>
+            <p>感谢您的支持，希望明天会更好！</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
