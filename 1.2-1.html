@@ -4,12 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>1.2-1</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <title>栅格偏移</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            outline: 1px solid black;
+        }
+
+        .col-md-4 {
+            outline: 1px solid black; /*添加外边框*/
+            background-color: pink;
+        }
+    </style>
     <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
 </head>
 <body>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-4">.col-md-4</div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-1">.col-md-4</div>
+        <div class="col-md-4 col-md-offset-1">.col-md-4</div>
+    </div>
+</div>
 </body>
 </html>
