@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>响应式栅格</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .row {
+            margin: 30px;
+        }
+
+        .col-md-4,.col-md-8,.col-sm-6,.col-sm-12 {
+            outline: 1px solid black; /*添加外边框*/
+            background-color: pink;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-8">.col-sm-12 .com-md-8</div>
+        <div class="col-sm-6 col-md-4">.col-sm-6 .col-md-4</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-4">.col-sm-6 .com-md-4</div>
+        <div class="col-sm-6 col-md-4">.col-sm-6 .col-md-4</div>
+        <div class="col-sm-6 col-md-4">.col-sm-6 .col-md-4</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">.col-sm-6</div>
+        <div class="col-sm-6">.col-sm-6</div>
+    </div>
+</div>
+</body>
+</html>
