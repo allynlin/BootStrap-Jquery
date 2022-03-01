@@ -7,18 +7,17 @@
     <title>组合栅格系统</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .col-sm-8, .col-sm-2, .col-sm-6 {
+        .col-md-8, .col-md-2, .col-md-6 {
             outline: 1px solid #999;
             padding: 0;
         }
 
-        .col-sm-2 {
+        .col-md-2 {
             background-color: #ff3300;
             text-align: center;
             height: 320px;
         }
-
-        .col-sm-2 a {
+        .col-md-2 a {
             color: blue;
             font-weight: bold;
             text-shadow: none;
@@ -31,12 +30,12 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-sm-8 offset-sm-2 d-none d-md-block">
+        <div class="col-md-8 offset-sm-2 d-none d-sm-block">
             <img src="image/music_banner.png" width="100%" alt="banner">
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-2 offset-sm-2 d-none d-md-block">
+        <div class="col-md-2 offset-md-2 d-none d-md-block">
             <a href="#">首页</a><br>
             <a href="#">古典音乐</a><br>
             <a href="#">现代流行</a><br>
@@ -45,21 +44,21 @@
             <a href="#">80后音乐</a><br>
             <a href="#">90后音乐</a><br>
         </div>
-        <div class="row d-block d-sm-none">
-            <div class="col"><a href="#">首页</a></div>
-            <div class="col"><a href="#">古典音乐</a></div>
-            <div class="col"><a href="#">现代流行</a></div>
-            <div class="col"><a href="#">爵士音乐</a></div>
-            <div class="col"><a href="#">70后音乐</a></div>
-            <div class="col"><a href="#">80后音乐</a></div>
-            <div class="col"><a href="#">90后音乐</a></div>
+        <div class="row d-sm-none">
+            <div class="col-4"><a href="#">首页</a></div>
+            <div class="col-4"><a href="#">古典音乐</a></div>
+            <div class="col-4"><a href="#">现代流行</a></div>
+            <div class="col-4"><a href="#">爵士音乐</a></div>
+            <div class="col-4"><a href="#">70后音乐</a></div>
+            <div class="col-4"><a href="#">80后音乐</a></div>
+            <div class="col-4"><a href="#">90后音乐</a></div>
         </div>
-        <div class="col-sm-6" style="text-align: center;display: flex;flex-direction: column;justify-content: center;">
+        <div class="col-md-6" style="text-align: center;display: flex;flex-direction: column;justify-content: center;">
             <p>这里是内容</p>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-8 offset-sm-2" style="text-align: center;padding-top: 10px">
+        <div class="col-md-8 offset-md-2" style="text-align: center;padding-top: 10px">
             <p>|联系我们|关于我们|</p>
             <p>感谢您的支持，希望明天会更好！</p>
         </div>
