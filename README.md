@@ -107,5 +107,80 @@ Bootstrap内置了一套响应式、移动设备优先的流式栅格系统，�
       </div>
   </div>
   ```
-	
+
+### 栅格互换
+
+栅格系统5开始 push和pull已经被弃用
+
+![](image/image_2.png "")
+
+- 代码实现
+  ```HTML
+  <div class="container">
+      <p>栅格系统互换后</p>
+      <div class="row">
+          <div class="col-md-3 order-2">
+          <!--order用于排序 从左往右 order-2代表第二个-->
+              .col-md-3
+          </div>
+          <div class="col-md-9 order-1">
+          <!--order用于排序 从左往右 order-1代表第一个-->
+              .col-md-9
+          </div>
+      </div>
+  </div>
+  ```
+
+
+### 栅格嵌套
+
+![](image/image_3.png "")
+
+- 代码实现
+  ```HTML
+  <div class="container">
+      <div class="row">
+          <div class="col-md-3">.col-md-3</div>
+          <div class="col-md-9">
+              Level1:.col-md-9
+              <div class="row">
+                  <div class="col-md-6">.col-md-6</div>
+                  <div class="col-md-6">.col-md-6</div>
+              </div>
+          </div>
+      </div>
+  </div>
+  ```
+
+
+嵌套后，也是按照**最多12列**来进行分列
+
+### 响应式栅格
+
+![](image/image_4.png "设备仿真-ipad")
+
+![](image/image_5.png "设备仿真-手机")
+
+- 代码实现
+  ```HTML
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-12 col-md-8">.col-sm-12 .com-md-8</div>
+          <div class="col-sm-6 col-md-4">.col-sm-6 .col-md-4</div>
+      </div>
+      <div class="row">
+          <div class="col-sm-6 col-md-4">.col-sm-6 .com-md-4</div>
+          <div class="col-sm-6 col-md-4">.col-sm-6 .col-md-4</div>
+          <div class="col-sm-6 col-md-4">.col-sm-6 .col-md-4</div>
+      </div>
+      <div class="row">
+          <div class="col-sm-6">.col-sm-6</div>
+          <div class="col-sm-6">.col-sm-6</div>
+      </div>
+  </div>
+  ```
+
+
+响应式栅格是为了适应不同设备做出的自适应调整
+
 
