@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<meta content="light dark" name="color-scheme">
+	<title>学院导航栏</title>
+	<style>
+		body {
+			background-color: #018478;
+		}
+		
+		.btn-lg {
+			background-color: white;
+			color: black;
+			border: white 1px solid;
+		}
+		
+		.btn:hover {
+			background-color: #34bcaf;
+		}
+		
+		.container{
+			margin-top: 20px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="btn-group">
+		<button class="btn-lg btn-default">首页</button>
+	</div>
+	<div class="btn-group">
+		<button class="btn-lg btn-success dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+			学院概况
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="#">学院简介</a></li>
+			<li><a href="#">领导介绍</a></li>
+			<li><a href="#">学院章程</a></li>
+			<li><a href="#">学院标识</a></li>
+			<li><a href="#">校训校歌</a></li>
+			<li><a href="#">3D全景校园</a></li>
+			<li><a href="#">校园日历</a></li>
+			<li><a href="#">学院宣传视频</a></li>
+		</ul>
+	</div>
+	<div class="btn-group">
+		<button class="btn-lg btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+			学院机构
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="#">党政机构</a></li>
+			<li><a href="#">党群机构</a></li>
+			<li><a href="#">教辅机构</a></li>
+		</ul>
+	</div>
+	<div class="btn-group">
+		<button class="btn-lg btn-success dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown">
+			教学系部
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="#">环境监测系</a></li>
+			<li><a href="#">环境工程系</a></li>
+			<li><a href="#">环境科学系</a></li>
+			<li><a href="#">环境艺术与建筑系</a></li>
+			<li><a href="#">环境经济与信息系</a></li>
+			<li><a href="#">思想政治理论课部</a></li>
+			<li><a href="#">基础课教学部</a></li>
+			<li><a href="#">体育课教学部</a></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>
