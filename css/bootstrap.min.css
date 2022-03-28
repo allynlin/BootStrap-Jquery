@@ -6298,7 +6298,7 @@ button.close {
 .modal-dialog {
     position: relative;
     width: auto;
-    margin: 10px
+    margin: 10px;
 }
 
 .modal-content {
@@ -6350,7 +6350,7 @@ button.close {
 
 .modal-body {
     position: relative;
-    padding: 15px
+    padding: 15px;
 }
 
 .modal-footer {
