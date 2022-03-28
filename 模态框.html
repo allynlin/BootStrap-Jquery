@@ -41,22 +41,24 @@
 				<button class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">登录百度账号</h4>
 			</div>
-			<form action="#">
-				<div class="modal-body">
-					<div class="col-md-10 col-md-offset-1 myMp">
-						<input class="form-control" type="text" placeholder="手机/邮箱/用户名"/>
+			<div class="modal-body">
+				<form action="#">
+					<div class="form-group myMp">
+						<input type="text" class="form-control" placeholder="手机/邮箱/登录名">
 					</div>
-					<div class="col-md-10 col-md-offset-1 myMp">
-						<input class="form-control" type="text" placeholder="密码"/>
+					<div class="form-group myMp">
+						<input type="text" class="form-control" placeholder="密码">
 					</div>
-					<div class="col-md-10 col-md-offset-1 myMp">
-						<input type="checkbox"/>下次自动登录
+					<div class="form-group myMp">
+						<input type="checkbox" id="a">
+						<label for="a">下次自动登录</label>
+						<!--label里面的for属性值和前面的input属性id值对应，这样在页面中点击“下次自动登录”时就会将checkbox选中-->
 					</div>
-					<div class="col-md-12 myB">
-						<input class="btn btn-primary form-control" type="submit" value="登录"/>
+					<div class="form-group myB">
+						<button class="btn btn-primary" style="width:100%;">登录</button>
 					</div>
-				</div>
-			</form>
+				</form>
+			</div>
 			<div class="modal-footer">
 			
 			</div>
