@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<meta content="light dark" name="color-scheme">
+	<title>栅格导航</title>
+    <style>
+        #main-nav.nav-tabs.nav-stacked>li>a>span{
+            color:#4A515B;
+        }
+        #main-nav.nav-tabs.nav-stacked>li.active>a,#main-nav.nav-tabs.nav-stacked>li>a:hover{
+            color:#FFF;
+            background:#3C4049;
+            background:-moz-linear-gradient(top,#4A515B 0%,#3C4049 100%);
+            background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#4A515B),color-stop(100%,#3C4049));
+            background:-webkit-linear-gradient(top,#4A515B 0%,#3C4049 100%);
+            background:-o-linear-gradient(top,#4A515B 0%,#3C4049 100%);
+            background:-ms-linear-gradient(top,#4A515B 0%,#3C4049 100%);
+            background:linear-gradient(top,#4A515B 0%,#3C4049 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4A515B',endColorstr='#3C4049');
+            -ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr='#4A515B',endColorstr='#3C4049')";
+            border-color:#2B2E33;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <ul id="main-nav" class="nav nav-tabs nav-stacked" style="">
+                    <li class="active">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-th-large"></i>
+                            首页
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#systemSetting1" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-cog"></i>
+                            系统管理
+                            <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul id="systemSetting1" class="nav nav-list collapse secondmenu" style="height:0px;">
+                            <li><a href="#"><i class="glyphicon glyphicon-user"></i>用户管理</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-th-list"></i>菜单管理</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>角色管理</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#systemSetting2" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-cog"></i>
+                            物料管理
+                            <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul id="systemSetting2" class="nav nav-list collapse secondmenu" style="height:0px;">
+                            <li><a href="#"><i class="glyphicon glyphicon-user"></i>物品管理</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-th-list"></i>材料管理</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>后勤管理</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#systemSetting3" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-cog"></i>
+                            分发配置
+                            <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul id="systemSetting3" class="nav nav-list collapse secondmenu" style="height:0px;">
+                            <li><a href="#"><i class="glyphicon glyphicon-user"></i>分发记录</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-th-list"></i>产品返厂</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#systemSetting4" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-cog"></i>
+                            图表统计
+                            <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul id="systemSetting4" class="nav nav-list collapse secondmenu" style="height:0px;">
+                            <li><a href="#"><i class="glyphicon glyphicon-user"></i>扇形统计表</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-th-list"></i>折线统计表</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>条形统计表</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
