@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-	      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<meta content="light dark" name="color-scheme">
-	<title>进度条</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>进度条</title>
 </head>
 <body>
 <!--基本选择器-->
@@ -18,50 +18,50 @@
 <p class="odd">当你的能力驾驭不了你的目标时</p>
 <p class="even">就应该沉下心来，历练</p>
 <script>
-	$("h1").css("color", "red");
-	$(".odd").css("background", "red");
-	$(".even").css("background", "yellow");
+    $("h1").css("color", "red");
+    $(".odd").css("background", "red");
+    $(".even").css("background", "yellow");
 </script>
 <hr/>
 <!--层次选择器-->
 <h1>编程语言排名</h1>
 <ul>
-	<li id="one">
-		<ul>
-			<li>Java语言占例：</li>
-			<li></li>
-		</ul>
-	</li>
-	<li id="tow">
-		<ul>
-			<li>C语言占例：</li>
-			<li></li>
-		</ul>
-	</li>
-	<li id="three">
-		<ul>
-			<li>C++语言占例：</li>
-			<li></li>
-		</ul>
-	</li>
+    <li id="one">
+        <ul>
+            <li>Java语言占例：</li>
+            <li></li>
+        </ul>
+    </li>
+    <li id="tow">
+        <ul>
+            <li>C语言占例：</li>
+            <li></li>
+        </ul>
+    </li>
+    <li id="three">
+        <ul>
+            <li>C++语言占例：</li>
+            <li></li>
+        </ul>
+    </li>
 </ul>
 <script>
-	var progress = function (obj, val, color) {
-		var i = 0;
-		var length = 2000;
-		val *= 10;
-		var flag = setInterval(function () {
-			i++;
-			if (i > val) {
-				clearInterval(flag);
-			} else {
-				obj.html(i / 10 + "%").css("background", color).css("width", (i / 1000) * length + "px");
-			}
-		}, 10);
-	};
-	progress($("#one ul li:eq(1)"), 20, "red");
-	progress($("#one+li ul li:eq(1)"), 14, "green");
-	progress($("#tow~li ul li:eq(1)"), 7, "pink");
+    var progress = function (obj, val, color) {
+        var i = 0;
+        var length = 2000;
+        val *= 10;
+        var flag = setInterval(function () {
+            i++;
+            if (i > val) {
+                clearInterval(flag);
+            } else {
+                obj.html(i / 10 + "%").css("background", color).css("width", (i / 1000) * length + "px");
+            }
+        }, 10);
+    };
+    progress($("#one ul li:eq(1)"), 20, "red");
+    progress($("#one+li ul li:eq(1)"), 14, "green");
+    progress($("#tow~li ul li:eq(1)"), 7, "pink");
 </script>
 </body>
 </html>
