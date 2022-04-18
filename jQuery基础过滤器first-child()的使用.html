@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>jQuery基础过滤器:first-child()的使用</title>
+    <style>
+        ul{
+            width: 100px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+<h3>jQuery基础过滤器:first-child示例</h3>
+<hr>
+<ul>
+    <li>苹果</li>
+    <li>香蕉</li>
+    <li>荔枝</li>
+</ul>
+<ul>
+    <li>西瓜</li>
+    <li>哈密瓜</li>
+    <li>椰子</li>
+</ul>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $("li:first-child").css({
+            fontWeight: "bold",
+            color: "red"
+        });
+    });
+</script>
