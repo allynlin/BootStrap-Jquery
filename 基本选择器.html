@@ -96,6 +96,10 @@
         //改变索引值大于3的<div>元素的背景色
         // $("div:gt(3)").css("background", "#bbffaa");
         //改变索引值小于3的<div>元素的背景色
-        $("div:lt(3)").css("background", "#bbffaa");
+        // $("div:lt(3)").css("background", "#bbffaa");
+        //改变每个class为one的<div>父元素下的第1个子元素的背景色
+        // $("div.one:first-child").css("background", "#bbffaa");
+        //改变每个class为one的<div>父元素下的最后一个子元素的背景色
+        $("div:last-child").css("background", "#bbffaa");
     })
 </script>
