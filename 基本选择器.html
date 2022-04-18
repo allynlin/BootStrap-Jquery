@@ -1,85 +1,101 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-	      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<meta content="light dark" name="color-scheme">
-	<title>基本选择器</title>
-	<style>
-		div, span, p {
-			width: 140px;
-			height: 140px;
-			margin: 5px;
-			background: #aaa;
-			border: #000 1px solid;
-			float: left;
-			font-size: 17px;
-			font-family: verdana;
-		}
-		
-		div .mini {
-			width: 55px;
-			height: 55px;
-			background-color: #aaa;
-			font-size: 12px;
-		}
-		
-		div .hide {
-			display: none;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>基本选择器</title>
+    <style>
+        div, span, p {
+            width: 140px;
+            height: 140px;
+            margin: 5px;
+            background: #aaa;
+            border: #000 1px solid;
+            float: left;
+            font-size: 17px;
+            font-family: verdana;
+        }
+
+        div .mini {
+            width: 55px;
+            height: 55px;
+            background-color: #aaa;
+            font-size: 12px;
+        }
+
+        div .hide {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <div class="one" id="one">
-	id为one，class为one的div
-	<div class="mini">class为mini</div>
+    id为one，class为one的div
+    <div class="mini">class为mini</div>
 </div>
 <div class="one" id="tow" title="test">
-	id为two，class为one，title为test的div
-	<div class="mini" title="other">class为mini，title为other</div>
-	<div class="mini" title="test">clas为mini，titl为test</div>
+    id为two，class为one，title为test的div
+    <div class="mini" title="other">class为mini，title为other</div>
+    <div class="mini" title="test">clas为mini，titl为test</div>
 </div>
 <div class="one">
-	<div class="mini">class为mini</div>
-	<div class="mini">class为mini</div>
-	<div class="mini">class为mini</div>
-	<div class="mini"></div>
+    <div class="mini">class为mini</div>
+    <div class="mini">class为mini</div>
+    <div class="mini">class为mini</div>
+    <div class="mini"></div>
 </div>
 <div class="one">
-	<div class="mini">class为mini</div>
-	<div class="mini">class为mini</div>
-	<div class="mini">class为mini</div>
-	<div class="mini" title="tesst">class为mini,title为tesst</div>
+    <div class="mini">class为mini</div>
+    <div class="mini">class为mini</div>
+    <div class="mini">class为mini</div>
+    <div class="mini" title="tesst">class为mini,title为tesst</div>
 </div>
 <div style="display: none;" class="none">
-	style的display为"none"的div
+    style的display为"none"的div
 </div>
 
 <div class="hide">class为“hide”的div</div>
 
 <div>
-	包含input的type为“hidden”的div<input type="hidden" size="8"/>
+    包含input的type为“hidden”的div<input type="hidden" size="8"/>
 </div>
 <span id="mover">正在执行动画的span元素</span>
 </body>
 </html>
 <script>
-	$(function () {
-		//1.基本选择器
+    $(function () {
+        //1.基本选择器
 //		$("#one").css("background","#bbffaa");
 //		$(".mini").css("background","#bbffaa");
 //		$("div").css("background","#bbffaa");
 //		$("*").css("background","#bbffaa");
 //		$("span,#tow").css("background","#bbffaa");
-		
-		//2.层次选择器
+
+        //2.层次选择器
 //		$("body div").css("background","#bbffaa");
 //		$("body>div").css("background","#bbffaa");
-		$(".one+div").css("background", "#bbffaa");
-		
-	})
+// 		$(".one+div").css("background", "#bbffaa");
+// 		3.基本过滤选择器
+        //改变第一个<div>元素的背景色
+        // $("div:first").css("background", "#bbffaa");
+        //改变最后一个<div>元素的背景色
+        // $("div:last").css("background", "#bbffaa");
+        //改变class不为one的<div>元素的背景色
+        // $("div:not(.one)").css("background", "#bbffaa");
+        //改变索引值为偶数的<div>元素的背景色
+        // $("div:even").css("background", "#bbffaa");
+        //改变索引值为奇数的<div>元素的背景色
+        // $("div:odd").css("background", "#bbffaa");
+        //改变索引值等于3的<div>元素的背景色
+        // $("div:eq(3)").css("background", "#bbffaa");
+        //改变索引值大于3的<div>元素的背景色
+        // $("div:gt(3)").css("background", "#bbffaa");
+        //改变索引值小于3的<div>元素的背景色
+        $("div:lt(3)").css("background", "#bbffaa");
+    })
 </script>
