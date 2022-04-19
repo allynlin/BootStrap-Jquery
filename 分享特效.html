@@ -57,8 +57,10 @@
                 }
                 click_num = 0;
             }
+
         });
         $("#qq").click(function () {
+            click_num++;
             if ($('#qqtext').is(':hidden')) {
                 $('#qqtext').show();
                 $('#wbtext').hide();
@@ -75,6 +77,7 @@
             }
         });
         $("#wx").click(function () {
+            click_num++;
             if ($('#wxtext').is(':hidden')) {
                 $('#wxtext').show();
                 $('#qqtext').hide();
@@ -91,6 +94,7 @@
             }
         });
         $("#rr").click(function () {
+            click_num++;
             if ($('#rrtext').is(':hidden')) {
                 $('#rrtext').show();
                 $('#qqtext').hide();
