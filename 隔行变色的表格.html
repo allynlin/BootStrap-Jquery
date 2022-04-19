@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/template-web.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>隔行变色的表格</title>
+</head>
+<body>
+<div class="container">
+    <div class="col-md-12">
+        <h1>隔行变色的表格</h1>
+        <table class="table table-striped">
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/html" id="text">
+    {{each list value}}
+        <tr>
+            <td>{{value.title}}</td>
+            <td style="text-align: center">{{value.body}}</td>
+            <td style="text-align: right">更多>></td>
+        </tr>
+    {{/each}}
+</script>
+<script>
+    var arr = [
+        {
+            title: '[页游]',
+            body: '[枪魂 女神联盟 37WAN游戏 武易 斗胜 烈焰 大闹天宫OL]'
+        },
+        {
+            title: '[页游]',
+            body: '[枪魂 女神联盟 37WAN游戏 武易 斗胜 烈焰 大闹天宫OL]'
+        },
+        {
+            title: '[页游]',
+            body: '[枪魂 女神联盟 37WAN游戏 武易 斗胜 烈焰 大闹天宫OL]'
+        },
+        {
+            title: '[页游]',
+            body: '[枪魂 女神联盟 37WAN游戏 武易 斗胜 烈焰 大闹天宫OL]'
+        },
+        {
+            title: '[页游]',
+            body: '[枪魂 女神联盟 37WAN游戏 武易 斗胜 烈焰 大闹天宫OL]'
+        },
+        {
+            title: '[页游]',
+            body: '[枪魂 女神联盟 37WAN游戏 武易 斗胜 烈焰 大闹天宫OL]'
+        },
+        {
+            title: '[页游]',
+            body: '[枪魂 女神联盟 37WAN游戏 武易 斗胜 烈焰 大闹天宫OL]'
+        },
+        {
+            title: '[页游]',
+            body: '[枪魂 女神联盟 37WAN游戏 武易 斗胜 烈焰 大闹天宫OL]'
+        }
+    ];
+    //调用template函数
+    var htmlStr = template("text", {list: arr});
+    //将渲染好的HTML放到容器中
+    var tbo = document.getElementById('tbody');
+    tbo.innerHTML += htmlStr;
+
+    $("tr:even").css("background", "#fff");
+    $("tr:odd").css("background", "#eee");
+</script>

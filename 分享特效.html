@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>分享特效</title>
+    <style>
+        img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .top {
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="col-md-12 text-center top">
+        分享到：
+        <img src="icon/新浪微博.png" id="wb">
+        <img src="icon/QQ.png" id="qq">
+        <img src="icon/微信.png" id="wx">
+        <img src="icon/人人网.png" id="rr">
+        <p id="wbtext" hidden>分享到微博吗？</p>
+        <p id="qqtext" hidden>分享到QQ吗？</p>
+        <p id="wxtext" hidden>分享到微信吗？</p>
+        <p id="rrtext" hidden>分享到人人网吗？</p>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        //如果一分钟内点击超过5次，弹窗提醒
+        var time = new Date().getTime();
+        var click_num = 0;
+        $("#wb").click(function () {
+            click_num++;
+            if ($('#wbtext').is(':hidden')) {
+                $('#wbtext').show();
+                $('#qqtext').hide();
+                $('#wxtext').hide();
+                $('#rrtext').hide();
+            } else {
+                $('#wbtext').hide();
+            }
+            if (click_num > 5) {
+                if (time + 60000 > new Date().getTime()) {
+                    alert("您点击的太频繁了!");
+                }
+                click_num = 0;
+            }
+        });
+        $("#qq").click(function () {
+            if ($('#qqtext').is(':hidden')) {
+                $('#qqtext').show();
+                $('#wbtext').hide();
+                $('#wxtext').hide();
+                $('#rrtext').hide();
+            } else {
+                $('#qqtext').hide();
+            }
+            if (click_num > 5) {
+                if (time + 60000 > new Date().getTime()) {
+                    alert("您点击的太频繁了!");
+                }
+                click_num = 0;
+            }
+        });
+        $("#wx").click(function () {
+            if ($('#wxtext').is(':hidden')) {
+                $('#wxtext').show();
+                $('#qqtext').hide();
+                $('#wbtext').hide();
+                $('#rrtext').hide();
+            } else {
+                $('#wxtext').hide();
+            }
+            if (click_num > 5) {
+                if (time + 60000 > new Date().getTime()) {
+                    alert("您点击的太频繁了!");
+                }
+                click_num = 0;
+            }
+        });
+        $("#rr").click(function () {
+            if ($('#rrtext').is(':hidden')) {
+                $('#rrtext').show();
+                $('#qqtext').hide();
+                $('#wxtext').hide();
+                $('#wbtext').hide();
+            } else {
+                $('#rrtext').hide();
+            }
+            if (click_num > 5) {
+                if (time + 60000 > new Date().getTime()) {
+                    alert("您点击的太频繁了!");
+                }
+                click_num = 0;
+            }
+        });
+    })
+</script>
