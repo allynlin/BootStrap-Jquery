@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>囧妈(2020)</title>
+    <style>
+        span {
+            /*padding: 5px 0px;*/
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="image/jm.jpg" width="100%" alt="收藏本片">
+        </div>
+        <div class="col-md-9">
+            <h3 id="tt">囧妈(2020)</h3>
+            <div>
+                <span class="tt">主演： </span>
+                <span>徐峥 / 袁泉 / 郭京飞 / 黄景瑜 / 嘉宾 等</span>
+            </div>
+            <div>
+                <span class="tt" id="dy">导演： </span>
+                <span id="dyname">徐峥</span>
+            </div>
+            <div>
+                <span class="tt" id="bq">标签： </span>
+                <span>徐峥 电影 囧妈 俄囧</span>
+            </div>
+            <hr>
+            <div>
+                <span class="tt">剧情:</span>
+                <span>小老板伊万（徐峥饰）缠身于商业纠纷，却意外同母亲坐上了开往俄罗斯的火车。在旅途中，他和母亲发生激烈冲突，同时还要和竞争对手斗智斗勇。为了最终抵达莫斯科，他不得不和母亲共同克服难关，并面对家庭生活中一直所逃避的问题……<a
+                        href="#" style="text-decoration: underline">点击了解更多</a></span>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary btn-lg" id="play">
+                <i class="glyphicon glyphicon-play"></i>
+                <span>立即播放</span>
+            </button>
+        </div>
+        <div class="col-md-12" style="padding-top: 10px">
+            <div class="btn-group">
+                <button class="btn btn-lg" id="love">
+                    <i class="glyphicon glyphicon-heart"></i>
+                    <span>收藏</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $("#tt").click(function () {
+            $("span[class=tt]").css("color", "#ff0099");
+            $("span[class=tt]").css("font-weight", "bold");
+        });
+        $("#dy").click(function () {
+            $("span[id=dyname]").css("font-weight", "bold");
+        });
+        $("#bq").click(function () {
+            $("h3").css("background-color", "#e0f8ea");
+            $("h3").css("color", "#10a14b", "margin", "2px 8px");
+            $("h3").css("padding", "2px 8px");
+        });
+        $("img[alt='收藏本片']").click(function () {
+            alert("收藏成功");
+        });
+        $("#love").click(function () {
+            alert("收藏成功");
+        });
+        $("#play").click(function () {
+            alert("播放成功");
+        });
+    });
+</script>

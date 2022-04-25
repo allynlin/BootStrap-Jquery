@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>jQuery属性选择器的使用</title>
+</head>
+<body>
+<section id="news">
+    <header>新闻快报<a href="#" class="more">更多></a></header>
+    <ul>
+        <li>
+            <a href="sale.news.com/act/h7mf8.html" class="hot">
+                <span>[618]</span>新闻标题1
+            </a>
+        </li>
+        <li>
+            <a href="sale.news.com/news.aspx?id=29257" class="hot">
+                <span>[公告]</span>新闻标题2
+            </a>
+        </li>
+        <li>
+            <a href="sale.news.com/act/k2ad45v.html" class="hot">
+                <span>[特惠]</span>新闻标题3
+            </a>
+        </li>
+        <li>
+            <a href="www.news.com/news,aspx?id=29252" class="hot">
+                <span>[公告]</span>新闻标题4
+            </a>
+        </li>
+        <li>
+            <a href="sale.news.com/act/ugk2937w.html" class="hot">
+                <span>[特惠]</span>新闻标题5
+            </a>
+        </li>
+    </ul>
+</section>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        // 带有class属性
+        // $("#news a[class]").css("background","#c9cbcb");
+        // 带有class属性且值为hot
+        // $("#news a[class='hot']").css("background","#c9cbcb");
+        // 带有class属性且值不是hot
+        // $("#news a[class!='hot']").css("background","#c9cbcb");
+        // href值以www开头
+        // $("#news a[href^='www']").css("background","#c9cbcb");
+        // href值以html结尾
+        // $("#news a[href$='.html']").css("background","#c9cbcb");
+        // href值包含k2
+        $("#news a[href*='k2']").css("background", "#c9cbcb");
+    });
+</script>
