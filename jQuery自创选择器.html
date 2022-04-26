@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/white-pink.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>jQuery自创选择器</title>
+    <style>
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 white-pink">
+            <h1>电话号码过滤</h1>
+            <input type="text" name="search">
+            <div>
+                <button class="btn btn-success btn-block">搜索指定号码的人员</button>
+                <button class="btn btn-primary btn-block">查找未录入号码的人员</button>
+            </div>
+        </div>
+        <div class="col-md-8 white-pink">
+            <ul>
+                <li>高洛风：<span></span></li>
+                <li>王宝龙：<span>186123456789</span></li>
+                <li>刘万涛：<span>186111111111</span></li>
+                <li>胡宏运：<span></span></li>
+                <li>刘涛：<span>186222222222</span></li>
+                <li>李明霞：<span></span></li>
+                <li>陈家文：<span></span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 white-pink-100">
+            <h1>直隐直显的轮播图</h1>
+            <img src="image/banner_1.jfif">
+            <img src="image/banner_2.jfif" style="display: none">
+            <img src="image/banner_3.jfif" style="display: none">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 white-pink-100">
+            <ul>
+                <h2>笑笑更开心</h2>
+                <li>1.做梦，一切皆有可能</li>
+                <li>2.站在人生的米字路口，我更加彷徨</li>
+                <li>3.我一直在希望的田野上奔跑，虽然也偶尔被失望绊倒</li>
+            </ul>
+            <ul>
+                <li>4.灵魂的性感，才是骨子里真正的性感</li>
+                <div>5.你匍匐在地上仰视别人，</div>
+                <li>6.青春就像卫生纸</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $("button:contains('搜索')").click(function () {
+        var val = $(":text").val();
+        $("li").css("display", "none");
+        $("li:contains("+val+")").css("display", "block");
+    });
+    $("button:contains('查找')").click(function () {
+        $("li").css("display", "none");
+        $("li:contains('')").css("display", "block");
+    });
+
+    var i=0;
+    var len=$("img").length-1;
+    setInterval(function (){
+        if (i++%(2*len)<len){
+            $("img:visible").css("display", "none").next().css("display", "block");
+        }else {
+            $("img:visible").css("display", "none").prev().css("display", "block");
+        }
+    },1000);
+
+    $("ul li:first-child").css("background-color", "red");
+    $("ul li:eq(0)").css("background-color", "purple");
+</script>

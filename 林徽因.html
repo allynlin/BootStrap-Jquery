@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/white-pink.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>林徽因</title>
+    <style>
+        div{
+            width: 100%;
+            min-height: 40px;
+            background-color: black;
+            text-align: center;
+            color: white;
+            font-size: 30px;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+<div id="jj">林徽因简介</div>
+<p id="jjnr" hidden>林徽因（1904年6月10日－1955年4月1日），女，原名林徽音，祖籍福建闽县，生于浙江杭州，中国建筑学家、作家。中国历史上第一位女建筑学家。人民英雄纪念碑和中华人民共和国国徽深化方案的设计者。她是建筑学家梁思成的第一任妻子。</p>
+<div id="zp">主要作品</div>
+<p id="zpnr" hidden>
+    《你是人间四月天》<br>
+    《宝莲灯》<br>
+    《九十九度中》<br>
+</p>
+</body>
+</html>
+<script>
+    //点击jj就显示jj的内容
+    $("#jj").click(function () {
+        $("#jjnr").toggle();
+    });
+    //点击zp就显示zp的内容
+    $("#zp").click(function () {
+        $("#zpnr").toggle();
+    });
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>可见性过滤选择器</title>
+    <style>
+        #text_show{
+            display: none;
+            color: #00c;
+        }
+        #text_hide{
+            display: block;
+            color: #f30;
+        }
+    </style>
+</head>
+<body>
+<p id="text_hide">点击按钮，我会被隐藏</p>
+<p id="text_show">隐藏的我，被显示了，嘿嘿^^</p>
+<input type="button" name="show" value="显示隐藏的元素P" id="show">
+<input type="button" name="hide" value="隐藏显示的元素P" id="hide">
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $("#show").click(function () {
+            $("p:hidden").show();
+        });
+        $("#hide").click(function () {
+            $("p:visible").hide();
+        });
+    });
+</script>
