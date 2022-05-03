@@ -131,7 +131,7 @@ a {
     border-radius: 4px;
 }
 
-.white-pink input[type="text"], .white-pink input[type="file"], .white-pink input[type="date"], .white-pink select, .white-pink input[type="number"], .white-pink input[type="tel"] {
+.white-pink input[type="text"], .white-pink input[type="file"], .white-pink input[type="date"], .white-pink select, .white-pink input[type="number"], .white-pink input[type="tel"], .white-pink textarea, .white-pink select, .white-pink input[type="email"], .white-pink input[type="password"], .white-pink input[type="url"], .white-pink input[type="search"], .white-pink input[type="time"], .white-pink input[type="datetime-local"], .white-pink input[type="month"], .white-pink input[type="week"] {
     width: 60%;
     padding: 3px 0 3px 5px;
     margin-top: 2px;
