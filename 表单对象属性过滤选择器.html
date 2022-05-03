@@ -39,6 +39,7 @@
                 <input type="checkbox" name="newsletter" value="test4" checked>test4
                 <input type="checkbox" name="newsletter" value="test5">test5
             </label>
+            <div id="num1" class="text-center"></div>
             <label>
                 <span>下拉列表1:</span>
                 <select name="test" multiple style="height: 100px">
@@ -50,7 +51,6 @@
                     <option value="湖南" selected>湖南</option>
                 </select>
             </label>
-            <div></div>
             <label>
                 <span>下拉列表2:</span>
                 <select name="test" multiple style="height: 100px">
@@ -62,8 +62,23 @@
                     <option value="湖南" selected>湖南</option>
                 </select>
             </label>
+            <div id="num2" class="text-center"></div>
         </form>
     </div>
 </div>
 </body>
 </html>
+<script>
+    $(function () {
+        // 改变表单内可用<input>的值
+        $("#form1 input:enabled").val("这里变化了!");
+        // 改变表单内不可用<input>的值
+        $("#form1 input:disabled").val("这里不变了!");
+        // 获取多选框选中的个数
+        const length=$("input:checked").length;
+        $("#num1").html(length);
+        // 获取下拉列表选中的内容
+        const select=$(":selected").length;
+        $("#num2").html(select);
+    })
+</script>
