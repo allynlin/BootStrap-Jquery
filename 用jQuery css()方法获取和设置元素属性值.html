@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/white-pink.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>用jQuery css()方法获取和设置元素属性值</title>
+    <style>
+        div{
+            width: 200px;
+            height: 50px;
+            border: 1px solid silver;
+        }
+    </style>
+</head>
+<body>
+<h3>jQuery HTML 之 css()</h3>
+<hr>
+<div>Hello jQuery</div>
+<button id="btn01">获取CSS样式</button>
+<button id="btn02">重置CSS样式</button>
+<script>
+    $(document).ready(function () {
+        // 按钮 1 的点击事件：获取段落元素的 CSS 样式
+        $('#btn01').click(function () {
+            // 批量获取多个 CSS 样式
+            var css = $('div').css(['color', 'background-color', 'font-size']);
+            alert("当前的CSS样式为：\ncolor:" + css['color'] + "\nbackground-color:" + css['background-color'] + "\nfont-size:" + css['font-size']);
+        });
+        // 按钮 2 的点击事件：重置段落元素的 CSS 样式
+        $('#btn02').click(function () {
+            // 批量重置多个 CSS 样式
+            $('div').css({
+                'color': 'white',
+                'background-color': 'lightcoral',
+                'font-size': '30px',
+                'font-weight': 'bold'
+            });
+            alert("已重置CSS样式");
+        });
+    })
+</script>
+</body>
+</html>

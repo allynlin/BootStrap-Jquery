@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/white-pink.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>制作今日团购模块</title>
+    <style>
+        /*
+        1. body添加一个盒子；
+        2. 设置样式
+        2.1 清除默认样式（内外边距）
+        2.2 设置div的宽度、高度，水平居中、边框
+        */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 300px;
+            height: 300px;
+            border: 2px solid #ccc;
+            /*水平居中*/
+            margin: 0 auto;
+            /*距离上方100px*/
+            margin-top: 100px;
+            position: relative;
+            float: left;
+        }
+
+        /* 3. 添加背后的大图片*/
+        div img {
+            width: 300px;
+            height: 200px;
+        }
+
+        /*
+        精灵图：设置成某个标签的背景图片，再利用定位属性显示图片*/
+        /*4. 添加“热”字*/
+        div .hot {
+            width: 55px;
+            height: 50px;
+            position: absolute;
+            left: 0;
+            top: -4px;
+        }
+
+        div .price {
+            width: 134px;
+            height: 42px;
+            position: absolute;
+            left: -8px;
+            bottom: 95px;
+        }
+
+        .ba {
+            background-color: #d51938;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <img src="icon/QQ.png" alt="">
+    <span class="hot"></span>
+    <span class="price"></span>
+    <p>【2店通用】Love Taste爱的味道牛键生活馆双人套餐，提供免费WIFI</p>
+</div>
+<div>
+    <img src="icon/QQ.png" alt="">
+    <span class="hot"></span>
+    <span class="price"></span>
+    <p>【2店通用】Love Taste爱的味道牛键生活馆双人套餐，提供免费WIFI</p>
+</div>
+<div>
+    <img src="icon/QQ.png" alt="">
+    <span class="hot"></span>
+    <span class="price"></span>
+    <p>【2店通用】Love Taste爱的味道牛键生活馆双人套餐，提供免费WIFI</p>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        // 当鼠标移动到div上面时，给当前div添加一个类名ba
+        $("div").hover(function () {
+                $(this).addClass("ba");
+            }, function () {
+                $(this).removeClass("ba");
+            }
+        );
+    })
+</script>
