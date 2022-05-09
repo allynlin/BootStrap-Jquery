@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/white-pink.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>放大镜轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        #contain {
+            /* background:red; */
+            width: 80%;
+            height: 500px;
+            margin: 0 auto;
+        }
+
+        .left {
+            float: left;
+            /* background:pink; */
+        }
+
+        .right {
+            float: left;
+            width: 350px;
+            height: 350px;
+            overflow: hidden;
+            padding: 30px;
+            display: none;
+        }
+
+        .up {
+            width: 320px;
+            height: 200px;
+            padding: 30px;
+        }
+
+        .up img {
+            width: 320px;
+            height: 200px;
+        }
+
+        .down {
+            padding: 20px 20px 20px 35px;
+            margin: 20px 0px;
+        }
+
+        .down img {
+            width: 64px;
+            height: 40px;
+            border: 3px solid #ccc;
+        }
+
+
+    </style>
+</head>
+<body>
+<h1>放大镜轮播图</h1>
+<div id="contain">
+    <div class="left">
+        <div class="up"><img src="image/1.jpg" bigimage></div>
+        <div class="down">
+            <img src="image/1.jpg" smallimage>
+            <img src="image/2.jpg" smallimage>
+            <img src="image/3.jpg" smallimage>
+            <img src="image/4.jpg" smallimage>
+        </div>
+    </div>
+    <div class="right">
+        <img src="image/1.jpg" mirror>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $("[smallimage]").mouseover(function () {
+        var address=$(this).css('border','3px solid red').attr('src');
+        $("[bigimage]").attr('src',address);
+    }).mouseout(function () {
+        $(this).css('border','3px solid #ccc');
+    })
+</script>
