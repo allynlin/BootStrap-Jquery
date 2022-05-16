@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/white-pink.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>隐藏和显示的应用</title>
+</head>
+<body>
+<h3>隐藏和显示的应用（默认效果）</h3>
+<button id="hide01" type="button">隐藏</button>
+<button id="show01" type="button">显示</button>
+<p id="test01">测试段落01</p>
+<hr>
+<h3>隐藏和显示的应用（规定时长）</h3>
+<button id="hide02" type="button">隐藏</button>
+<button id="show02" type="button">显示</button>
+<p id="test02">测试段落02</p>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $("#hide01").click(function () {
+            $("#test01").hide();
+        });
+        $("#show01").click(function () {
+            $("#test01").show();
+        });
+        $("#hide02").click(function () {
+            $("#test02").hide(3000);
+        });
+        $("#show02").click(function () {
+            $("#test02").show(3000);
+        });
+    })
+</script>

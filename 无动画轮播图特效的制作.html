@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>无动画轮播图特效的制作</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .carousel {
+            width: 270px;
+            height: 481px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .carousel .carousel-images ul {
+            list-style: none;
+        }
+
+        .carousel .carousel-images ul li {
+            display: none;
+        }
+
+        .carousel .carousel-images ul li.cur {
+            display: block !important;
+        }
+
+        .carousel .carousel-images ul li img {
+            width: 270px;
+            height: 481px;
+        }
+
+        .carousel .carousel_nav {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 123px;
+            height: 24px;
+        }
+
+        .carousel .carousel_nav ol {
+            list-style: none;
+        }
+
+        .carousel .carousel_nav ol li {
+            float: left;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 6px;
+            background-color: #eee;
+            opacity: 0.6;
+        }
+
+        .carousel .carousel_nav ol li.cur {
+            background: darkred;
+        }
+
+        .carousel .carousel_btns .btn {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 20%;
+            background-color: yellow;
+        }
+
+        .carousel .carousel_btns .btn.left {
+            top: 50%;
+            left: 0;
+            margin-top: -20px;
+            margin-left: -20px;
+        }
+
+        .carousel .carousel_btns .btn.right {
+            top: 50%;
+            right: 0;
+            margin-top: -20px;
+            margin-right: -20px;
+        }
+    </style>
+</head>
+<body>
+<div class="carousel" id="myCarousel1">
+    <div class="carousel-images">
+        <ul>
+            <li style="display: none" class="cur">
+                <a href="javascript:;"><img src="image/1.jpg" alt=""></a>
+            </li>
+            <li style="display: none">
+                <a href="javascript:;"><img src="image/2.jpg" alt=""></a>
+            </li>
+            <li style="display: none">
+                <a href="javascript:;"><img src="image/3.jpg" alt=""></a>
+            </li>
+            <li style="display: none">
+                <a href="javascript:;"><img src="image/4.jpg" alt=""></a>
+            </li>
+        </ul>
+    </div>
+    <div class="carousel_nav">
+        <ol>
+            <li class="cur"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+    <div class="carousel_btns">
+        <a href="javascript:;" class="btn left"></a>
+        <a href="javascript:;" class="btn right"></a>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    let $carousel = $('#myCarousel1');
+    let $left_btn = $("#myCarousel1 .carousel_btns .btn.left");
+    let $right_btn = $("#myCarousel1 .carousel_btns .btn.right");
+    let $carousel_images_lis = $("#myCarousel1 .carousel-images li");
+    let $carousel_nav_lis = $("#myCarousel1 .carousel_nav li");
+    // 信号量
+    let index = 0;
+    // 图片总数
+    let len = $carousel_images_lis.length
+    // 定时器
+    let timer = setInterval(right_btn_handler, 1000);
+    // 鼠标滑过大盒子，离开大盒子的监听，需要停止再设置定时器
+    $carousel.hover(function () {
+        clearInterval(timer);
+    }, function () {
+        timer = setInterval(right_btn_handler, 1000);
+    });
+    // 右按钮的监听
+    $right_btn.click(right_btn_handler)
+
+    function right_btn_handler() {
+        index++;
+        if (index > len - 1) {
+            index = 0;
+        }
+        showPicAndSetCircles();
+    };
+    // 左按钮的监听
+    $left_btn.click(function () {
+        index--;
+        if (index < 0) {
+            index = len - 1;
+        }
+        showPicAndSetCircles();
+    });
+    // 小圆点的监听
+    $carousel_nav_lis.mouseover(function () {
+        index = $(this).index();
+        showPicAndSetCircles();
+    });
+
+    // 显示图片并设置小圆点
+    function showPicAndSetCircles() {
+        $carousel_nav_lis.each(function (i, e) {
+            // li 加上 cur 类名
+            $carousel_images_lis.eq(index).addClass('cur').siblings().removeClass('cur');
+            // 小圆点 cur
+            $carousel_nav_lis.eq(index).addClass('cur').siblings().removeClass('cur');
+        });
+    }
+</script>
