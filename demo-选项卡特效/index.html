@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>选项卡特效</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab {
+            width: 360px;
+            height: 280px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+        }
+
+        .tab .hd {
+            height: 30px;
+            width: 360px;
+        }
+
+        .tab .hd span {
+            float: left;
+            width: 59px;
+            height: 29px;
+            text-align: center;
+            line-height: 30px;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tab .hd span.last {
+            width: 60px;
+            border-right: none;
+        }
+
+        .tab .hd span.cur {
+            border-bottom: 1px solid red;
+        }
+
+        .bd {
+            padding-top: 10px;
+        }
+
+        .bd .column {
+            display: none;
+        }
+
+        .bd .column.cur {
+            display: block;
+        }
+
+        .bd .column img {
+            width: 360px;
+        }
+    </style>
+</head>
+<body>
+<div class="tab" id="myTab1">
+    <div class="hd">
+        <span class="cur">tab0</span>
+        <span>tab1</span>
+        <span>tab2</span>
+        <span>tab3</span>
+        <span>tab4</span>
+        <span class="last">tab5</span>
+    </div>
+    <div class="bd">
+        <div class="column cur">
+            <img src="images/0.jpg">
+        </div>
+        <div class="column">
+            <img src="images/1.jpg">
+        </div>
+        <div class="column">
+            <img src="images/2.jpg">
+        </div>
+        <div class="column">
+            <img src="images/3.jpg">
+        </div>
+        <div class="column">
+            <img src="images/4.jpg">
+        </div>
+        <div class="column">
+            <img src="images/5.jpg">
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    // 选项卡特效的关键是要捕捉到用户鼠标划过的那个标签的序号，所以可以用 index() 方法，然后使用 jQuery 选择器的 eq() 方法对应设置面板盒的显示或者隐藏
+    // 该函数的功能是：将盒子变成 tab 栏
+    function tabId(id) {
+        // 得到最大的盒子，所有存储 jQuery 对象的变量都要以 $ 开头
+        let $tab=$("#"+id)
+        // 得到和业务相关的盒子，有很多的元素，所有小元素要通过 find() 来寻找
+        let $hd_spans=$tab.find(".hd span");
+        let $bd_columns=$tab.find(".bd .column");
+        // 信号量
+        let index=0;
+        // 鼠标划过 span 时干什么
+        $hd_spans.mouseover(function () {
+            // 改变信号量为鼠标划过的那个 span 的序号
+            index=$(this).index();
+            // 让鼠标划过的 span 添加 cur 类，其他的 span 移除 cur 类
+            $(this).addClass("cur").siblings().removeClass("cur");
+            // 让对应的面板显示，其他的面板隐藏
+            $bd_columns.eq(index).addClass("cur").siblings().removeClass("cur");
+        })
+    }
+    // 调用函数
+    tabId("myTab1");
+    tabId("myTab2");
+</script>

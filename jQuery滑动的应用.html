@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="css/white-pink.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>jQuery滑动的应用</title>
+    <style>
+        div {
+            border: 1px solid;
+            padding: 20px 50px;
+            display: none;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>jQuery 滑动的应用</h3>
+    <hr>
+    <div>
+        <h3>jQuery 技术</h3>
+        <ul>
+            <li>jQuery 基础</li>
+            <li>jQuery 选择器</li>
+            <li>jQuery 过滤器</li>
+            <li>jQuery 事件</li>
+            <li>jQuery 效果</li>
+        </ul>
+    </div>
+    <br>
+    <button id="btn01" type="button">投影幕下降</button>
+    <button id="btn02" type="button">投影幕上升</button>
+</body>
+
+</html>
+<script>
+    $(document).ready(function() {
+        $('#btn01').click(function() {
+            $('div').slideDown(5000);
+        });
+        $('#btn02').click(function() {
+            $('div').slideUp(5000);
+        });
+    })
+</script>

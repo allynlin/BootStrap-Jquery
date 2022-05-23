@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/white-pink.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>制作常见问题分类页面</title>
+    <style>
+        .nav {
+            width: 100%;
+            text-align: center;
+        }
+
+        .kf {
+            width: 70px;
+            display: inline-block;
+        }
+
+        .nav ul {
+            list-style: none;
+            margin: 0 auto;
+            padding: 0;
+            border: 1px solid darkgray;
+            width: 70px;
+            display: none;
+        }
+
+        .left {
+            margin-left: 30px;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            background-color: darkgray;
+            color: white;
+            font-size: 20px;
+        }
+
+        .left span {
+            padding-left: 10px;
+        }
+
+        .left div {
+            width: 200px;
+            background-color: lightgrey;
+            margin: 0;
+            color: black;
+            /*display: none;*/
+        }
+
+        .left div span {
+            padding: 0px 0px 0px 10px;
+        }
+
+        .left div ul {
+            padding: 0 0 0 10px;
+            list-style: none;
+            margin: 0;
+            background-color: #e6e6e6;
+            color: black;
+            font-size: 16px;
+            width: 200px;
+            display: none;
+        }
+
+        .left div ul li {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <div class="kf">联系客服</div>
+    <ul>
+        <li>帮助中心</li>
+        <li>我要吐槽</li>
+        <li>在线客服</li>
+        <li>咨询JIMI</li>
+        <li>客服邮箱</li>
+    </ul>
+</div>
+<div class="left">
+    <span>常见问题分类</span>
+    <div>
+        <span>京东金融</span>
+        <ul>
+            <li>众筹</li>
+            <li>京东钱包</li>
+        </ul>
+    </div>
+    <div>
+        <span>理财</span>
+        <ul>
+            <li>理财</li>
+            <li></li>
+            <li>贷款</li>
+            <li>保险</li>
+            <li>红包</li>
+        </ul>
+    </div>
+    <div>
+        <span>白条</span>
+        <ul>
+            <li>白条</li>
+            <li>白条</li>
+            <li>白条</li>
+            <li>白条</li>
+        </ul>
+    </div>
+    <div>
+        <span>众筹</span>
+        <ul>
+            <li>产品众筹</li>
+            <li>轻众筹</li>
+            <li>产品众筹发起者常见问题</li>
+            <li>产品众筹支持者常见问题</li>
+            <li>产品众筹永久众筹常见问题</li>
+            <li>京东众创常见问题</li>
+        </ul>
+    </div>
+    <div>
+        <span>京东钱包</span>
+        <ul>
+            <li>京东钱包简介</li>
+            <li>自助服务及常见问题</li>
+            <li>购房盈</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        // 鼠标滑过.kf显示ul
+        $('.kf').hover(function () {
+            $(this).next().stop().slideDown("slow");
+        }, function () {
+            $(this).next().stop().slideUp("fast");
+        })
+        // 鼠标点击.left div显示ul
+        $('.left div').click(function () {
+            $(this).children('ul').stop().slideToggle("slow");
+        })
+    })
+</script>
