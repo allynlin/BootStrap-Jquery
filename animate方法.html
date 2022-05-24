@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>animate方法</title>
+    <style>
+        .box {
+            width: 180px;
+            height: 180px;
+            background-color: #eee;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box"></div>
+    <button id="btn1">stop()</button>
+    <button id="btn2">stop(true)</button>
+    <button id="btn3">stop(true,true)</button>
+    <button id="btn4">stop(false,true)</button>
+</body>
+
+</html>
+<script>
+    $("#box").animate({
+        "left": 1000
+    }, 1000);
+    $("#box").animate({
+        "top": 400
+    }, 1000);
+    $("#btn1").click(function() {
+        $("#box").stop();
+    });
+    $("#btn2").click(function() {
+        $("#box").stop(true);
+    });
+    $("#btn3").click(function() {
+        $("#box").stop(true, true);
+    });
+    $("#btn4").click(function() {
+        $("#box").stop(false, true);
+    });
+</script>

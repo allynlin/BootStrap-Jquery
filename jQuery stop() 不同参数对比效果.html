@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="css/white-pink.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>jQuery stop() 不同参数对比效果</title>
+</head>
+
+<body>
+    <h3>jQuery stop() 不同参数对比效果</h3>
+    <hr>
+    <button id="btnStart" type="button">开始</button>
+    <button id="btnStart01" type="button">停止当前动画</button>
+    <button id="btnStart02" type="button">停止所有动画</button>
+    <button id="btnStart03" type="button">停止并直接完成当前动画</button>
+    <p>你好，jQuery动画</p>
+</body>
+
+</html>
+<script>
+    $(document).ready(function() {
+        // 开始动画
+        $('#btnStart').click(function() {
+            $('p').animate({
+                    width: "100"
+                }, 2000)
+                .animate({
+                    height: "100"
+                }, 2000)
+                .animate({
+                    fontSize: "30"
+                }, 2000)
+        });
+        // 停止当前动画
+        $('#btnStart01').click(function() {
+            $('p').stop();
+        });
+        // 停止所有动画
+        $('#btnStart02').click(function() {
+            $('p').stop(true, false);
+        });
+        // 停止并直接完成当前动画
+        $('#btnStart03').click(function() {
+            $('p').stop(true, true);
+        });
+    })
+</script>
