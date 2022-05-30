@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/white-pink.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>动画积累</title>
+    <style>
+        .box{
+            width:60px;
+            height: 60px;
+            background-color: orange;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<button id="btn1">往右跑</button>
+<button id="btn2">往左跑</button>
+<div id="box" class="box"></div>
+</body>
+</html>
+<script>
+    $(function () {
+        $("#btn1").click(function () {
+            $("#box").stop().animate({left: 800}, 5000);
+        });
+        $("#btn2").click(function () {
+            if (!$("#box").is(":animated")) {
+                $("#box").stop().animate({left: 0}, 5000);
+            }else {
+                $("#box").stop();
+            }
+            // $("#box").stop().animate({left: '0'}, 5000);
+        });
+    })
+</script>
