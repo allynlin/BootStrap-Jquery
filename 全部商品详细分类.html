@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>隐藏全部商品详细分类</title>
+    <style>
+        #menu {
+            width: 220px;
+            height: 503px;
+            margin: 0 auto;
+            /*border: 1px solid #ccc;*/
+        }
+
+        .top {
+            width: 220px;
+            height: 50px;
+            -ms-text-align-last: center;
+            text-align-last: center;
+            font-weight: 700;
+            border: 1px solid #ccc;
+            border-bottom: none;
+        }
+
+        .nav {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #menu ul li {
+            padding: 10px 30px;
+            border: 1px solid #ccc;
+            /*border-top: 1px solid #ccc;*/
+            /*border-bottom: 1px solid #ccc;*/
+            margin-top: -1px;
+        }
+
+        .bottom {
+            width: 80px;
+            height: 10px;
+            -ms-text-align-last: center;
+            text-align-last: center;
+            margin: 0 auto ;
+            border: 1px solid #ccc;
+            border-top: none;
+            position: relative;
+        }
+
+        li img {
+            width: 20px;
+            height: 20px;
+            float: left;
+            vertical-align: middle;
+        }
+
+        .bottom img {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            top: -10px;
+            right: 25px;
+        }
+    </style>
+</head>
+<body>
+<div id="menu">
+    <div class="top">
+        <p>隐藏全部商品详细分类</p>
+    </div>
+    <ul class="nav">
+        <li style="border-top:none">
+            <img src="image/point.png">
+            尾品汇
+        </li>
+        <li><img src="image/point.png">图书音像数字馆</li>
+        <li><img src="image/point.png">美妆个护</li>
+        <li><img src="image/point.png">家具、家纺、加装</li>
+        <li><img src="image/point.png">鞋靴、箱包</li>
+        <li><img src="image/point.png">珠宝装饰</li>
+        <li><img src="image/point.png">手表/眼睛/礼品</li>
+        <li><img src="image/point.png">运动户外</li>
+        <li><img src="image/point.png">食品、茶、酒</li>
+        <li><img src="image/point.png">手机、数码</li>
+        <li><img src="image/point.png">电脑办公</li>
+    </ul>
+    <div class="bottom">
+        <img src="image/caret-up.png">
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        $('.bottom img').click(function () {
+            // 隐藏菜单后4项
+            $('#menu ul li:gt(6)').toggle();
+            // 改变图标
+            if ($(this).attr('src') == 'image/caret-up.png') {
+                $(this).attr('src', 'image/caret-down.png');
+            } else {
+                $(this).attr('src', 'image/caret-up.png');
+            }
+        })
+    })
+</script>

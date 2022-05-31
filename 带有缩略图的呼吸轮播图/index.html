@@ -184,53 +184,125 @@
 </div>
 </body>
 </html>
+<!--<script>-->
+<!--    $(function () {-->
+<!--        // 点击小图切换大图-->
+<!--        $('.small_nav_unit li').click(function () {-->
+<!--            var index = $(this).index();-->
+<!--            $(this).addClass('cur').siblings().removeClass('cur');-->
+<!--            $('.carousel_images ul li').eq(index).addClass('first').siblings().removeClass('first');-->
+<!--            $('.small_nav h3').text($(this).attr('data-title'));-->
+<!--        });-->
+<!--        // 左右按钮切换-->
+<!--        $('.small_nav .inner .left_btn').click(function () {-->
+<!--            let index = $('.small_nav_unit li.cur').index();-->
+<!--            if (index == 0) {-->
+<!--                index = $('.small_nav_unit li').length;-->
+<!--            }-->
+<!--            index&#45;&#45;;-->
+<!--            // $('.small_nav_unit li').eq(index).addClass('cur').siblings().removeClass('cur');-->
+<!--            // $('.carousel_images ul li').eq(index).addClass('first').siblings().removeClass('first');-->
+<!--            // $('.small_nav h3').text($('.small_nav_unit li').eq(index).attr('data-title'));-->
+<!--        });-->
+<!--        $('.small_nav .inner .right_btn').click(function () {-->
+<!--            let index = $('.small_nav_unit li.cur').index();-->
+<!--            if (index == $('.small_nav_unit li').length - 1) {-->
+<!--                index = -1;-->
+<!--            }-->
+<!--            index++;-->
+<!--            $('.small_nav_unit li').eq(index).addClass('cur').siblings().removeClass('cur');-->
+<!--            $('.carousel_images ul li').eq(index).addClass('first').siblings().removeClass('first');-->
+<!--            $('.small_nav h3').text($('.small_nav_unit li').eq(index).attr('data-title'));-->
+<!--        });-->
+<!--        // 自动轮播-->
+<!--        let timer = setInterval(function () {-->
+<!--            $('.small_nav .inner .right_btn').click();-->
+<!--        }, 3000);-->
+<!--        $('.small_nav .inner').hover(function () {-->
+<!--            clearInterval(timer);-->
+<!--        }, function () {-->
+<!--            timer = setInterval(function () {-->
+<!--                $('.small_nav .inner .right_btn').click();-->
+<!--            }, 3000);-->
+<!--        });-->
+<!--        // 鼠标移入小图切换大图-->
+<!--        $('.small_nav_unit li').hover(function () {-->
+<!--            let index = $(this).index();-->
+<!--            $(this).addClass('cur').siblings().removeClass('cur');-->
+<!--            $('.carousel_images ul li').eq(index).addClass('first').siblings().removeClass('first');-->
+<!--            $('.small_nav h3').text($(this).attr('data-title'));-->
+<!--        });-->
+<!--    })-->
+<!--</script>-->
 <script>
-    $(function () {
-        // 点击小图切换大图
-        $('.small_nav_unit li').click(function () {
-            var index = $(this).index();
-            $(this).addClass('cur').siblings().removeClass('cur');
-            $('.carousel_images ul li').eq(index).addClass('first').siblings().removeClass('first');
-            $('.small_nav h3').text($(this).attr('data-title'));
+    /*
+     1、克隆完整的一份微略图队列，放置在原有队列后面
+     2、设置两个信号量分别表示当前第几个小图正在最左边被显示，当前哪张大图正在被显示。
+     3、书写右按钮的事件监听，单机右按钮可以向左移动整个队列，当被克隆出的队列移动到0号位置时，瞬间拉回原来的位置
+     4、书写左按钮的事件监听，单机左按钮可以向右移动整个队列，当队列已经到达左边极限位置时，要先瞬间移动到被负责制出的图片位置，然后进行移动
+     5、鼠标进入小图可以呼吸方式进行大图的切换，同时标题文字也要进行相应改变
+     */
+    $(function(){
+        //得到大盒子
+        var $carousel=$("#carousel");
+        //得到按钮
+        var $right_btn=$carousel.find(".right_btn");
+        var $left_btn=$carousel.find(".left_btn");
+        //得到unit组合体
+        var $small_nav_unit=$carousel.find(".small_nav_unit");
+        //得到h3盒子
+        var $small_nav_h3=$carousel.find("h3");
+        //复制
+        $small_nav_unit.find("li").clone().appendTo($small_nav_unit);
+        //得到组合体中的小图
+        var $small_nav_unit_lis=$carousel.find(".small_nav_unit li");
+        //得到图片li
+        var $carousel_images_lis=$carousel.find(".carousel_images li");
+        //信号量，哪张大图正在显示
+        var idx=0;
+        //信号量，哪个小图排第一
+        var small_nav_idx=0;
+        //右按钮的监听
+        $right_btn.click(function(){
+            //验证如果当前正在运动，忽略这次单击
+            if($small_nav_unit.is(":animated"))return;
+
+            //套路
+            small_nav_idx++;
+            $small_nav_unit.animate({"left":-114*small_nav_idx},300,function(){
+                if(small_nav_idx>4){
+                    small_nav_idx=0;
+                    $(this).css("left",0);
+                }
+            });
         });
-        // 左右按钮切换
-        $('.small_nav .inner .left_btn').click(function () {
-            let index = $('.small_nav_unit li.cur').index();
-            if (index == 0) {
-                index = $('.small_nav_unit li').length;
+        //左按钮的监听
+        $left_btn.click(function(){
+            //验证如果当前正在运动，忽略这次
+            if($small_nav_unit.is(":animated"))return;
+            //套路
+            small_nav_idx--;
+            if(small_nav_idx<0){
+                small_nav_idx=4;
+                $small_nav_unit.css("left",-114*5);
             }
-            index--;
-            $('.small_nav_unit li').eq(index).addClass('cur').siblings().removeClass('cur');
-            $('.carousel_images ul li').eq(index).addClass('first').siblings().removeClass('first');
-            $('.small_nav h3').text($('.small_nav_unit li').eq(index).attr('data-title'));
+            $small_nav_unit.animate({"left":-114*small_nav_idx},300);
         });
-        $('.small_nav .inner .right_btn').click(function () {
-            let index = $('.small_nav_unit li.cur').index();
-            if (index == $('.small_nav_unit li').length - 1) {
-                index = -1;
-            }
-            index++;
-            $('.small_nav_unit li').eq(index).addClass('cur').siblings().removeClass('cur');
-            $('.carousel_images ul li').eq(index).addClass('first').siblings().removeClass('first');
-            $('.small_nav h3').text($('.small_nav_unit li').eq(index).attr('data-title'));
+        //鼠标进入小图时间
+        $small_nav_unit_lis.mouseenter(function(){
+            //旧图淡出
+            $carousel_images_lis.eq(idx).stop(true).fadeOut();
+            //信号量的改变，为了让复制的图片的index是0,1,2,3,4而不是5,6,7,8,9,所以信号量需要取余
+            idx=$(this).index()%5;
+            //新图淡入
+            $carousel_images_lis.eq(idx).stop(true).fadeIn();
+            //谁加了cur，真图和被复制的图一起加cur
+            $small_nav_unit_lis.removeClass("cur");
+            $small_nav_unit_lis.eq(idx).addClass("cur");
+            $small_nav_unit_lis.eq(idx+5).addClass("cur");
+
+            //文字
+            $small_nav_h3.html($(this).data("title"));
         });
-        // 自动轮播
-        let timer = setInterval(function () {
-            $('.small_nav .inner .right_btn').click();
-        }, 3000);
-        $('.small_nav .inner').hover(function () {
-            clearInterval(timer);
-        }, function () {
-            timer = setInterval(function () {
-                $('.small_nav .inner .right_btn').click();
-            }, 3000);
-        });
-        // 鼠标移入小图切换大图
-        $('.small_nav_unit li').hover(function () {
-            let index = $(this).index();
-            $(this).addClass('cur').siblings().removeClass('cur');
-            $('.carousel_images ul li').eq(index).addClass('first').siblings().removeClass('first');
-            $('.small_nav h3').text($(this).attr('data-title'));
-        });
-    })
+    });
 </script>
