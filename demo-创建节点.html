@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/white-pink.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>demo-创建节点</title>
+</head>
+<body>
+<button>点击我</button>
+<ul id="list">
+    <li>苹果</li>
+    <li>西瓜</li>
+</ul>
+</body>
+</html>
+<script>
+    $(function () {
+        $("button").click(function () {
+            // $("#list").append("<li>新增一个节点</li>");
+            let count = "哈密瓜";
+            $("#list").append($("<li>" + count + "</li>"));
+            let tt = "菠萝";
+            // $("#list").append($("<li>"+tt+"</li>"));
+            $("#list").prepend($("<li>" + tt + "</li>"));
+            // $("#list").before($("<ul><li>白菜</li></ul>"));
+            // $("#list").before($("<ul><li>比熊</li></ul>"));
+        });
+    })
+</script>

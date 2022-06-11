@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>demo-异性滚动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .carousel {
+            height: 480px;
+            width: 1200px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel .carousel_images ul {
+            list-style: none;
+        }
+        
+        .carousel .carousel_images ul li {
+            position: absolute;
+            left: 220px;
+        }
+        
+        .carousel .carousel_images ul li img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .left_btn {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            width: 45px;
+            height: 45px;
+            margin-top: -22.5px;
+            background: url("images/l.png") no-repeat;
+            z-index: 999;
+        }
+        
+        .right_btn {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            width: 45px;
+            height: 45px;
+            margin-top: -22.5px;
+            background: url("images/r.png") no-repeat;
+            z-index: 999;
+        }
+        
+        .circles {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 260px;
+            height: 16px;
+            margin-left: -135px;
+            z-index: 999;
+        }
+        
+        .circles ol {
+            list-style: none;
+        }
+        
+        .circles ol li {
+            float: left;
+            margin-right: 10px;
+            background-color: #eee;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+        
+        .circles ol li.cur {
+            background-color: #42A5F3;
+        }
+        
+        .mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel">
+        <div class="carousel_images">
+            <ul>
+                <li><img src="images/1.jpg" alt="">
+                    <div class="mask"></div>
+                </li>
+                <li><img src="images/2.jpg" alt="">
+                    <div class="mask"></div>
+                </li>
+                <li><img src="images/3.jpg" alt="">
+                    <div class="mask"></div>
+                </li>
+                <li><img src="images/4.jpg" alt="">
+                    <div class="mask"></div>
+                </li>
+                <li><img src="images/5.jpg" alt="">
+                    <div class="mask"></div>
+                </li>
+                <li><img src="images/6.jpg" alt="">
+                    <div class="mask"></div>
+                </li>
+                <li><img src="images/7.jpg" alt="">
+                    <div class="mask"></div>
+                </li>
+                <li><img src="images/8.jpg" alt="">
+                    <div class="mask"></div>
+                </li>
+                <li><img src="images/9.jpg" alt="">
+                    <div class="mask"></div>
+                </li>
+            </ul>
+            <div class="carousel_btns">
+                <a href="javascript:;" class="left_btn"></a>
+                <a href="javascript:;" class="right_btn"></a>
+            </div>
+            <div class="circles">
+                <ol>
+                    <li class="cur"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var posObj = {
+        A: {
+            "width": 257,
+            "height": 143,
+            "left": -134,
+            "top": 164,
+            "opacity": 0
+        },
+        B: {
+            "width": 513,
+            "height": 285,
+            "left": 0,
+            "top": 93,
+            "opacity": 1
+        },
+        C: {
+            "width": 800,
+            "height": 445,
+            "left": 200,
+            "top": 0,
+            "opacity": 1
+        },
+        D: {
+            "width": 513,
+            "height": 285,
+            "left": 687,
+            "top": 93,
+            "opacity": 1
+        },
+        E: {
+            "width": 257,
+            "height": 143,
+            "left": 1060,
+            "top": 164,
+            "opacity": 0
+        }
+    }
+    var posArr = [
+        posObj.C,
+        posObj.D,
+        posObj.E,
+        posObj.E,
+        posObj.E,
+        posObj.E,
+        posObj.E,
+        posObj.E,
+        posObj.A,
+        posObj.B,
+    ];
+
+    var zindexArr = [3, 2, 1, 1, 1, 1, 1, 1, 1, 2];
+
+    var maskArr = [0, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4];
+
+    //调用函数，设置初始值
+    setEveryLiByArr();
+
+    //信号量，信号量表示当前第几张图图居中，信号量不驱动大图动画，只驱动小圆点
+    var idx = 0;
+
+    //上帝之手
+    var god = false;
+
+    //定时器
+    var timer = setInterval(rightBtnHandler, 2000);
+
+    $(".carousel").mouseenter(function() {
+        clearInterval(timer);
+    }).mouseleave(function() {
+        timer = setInterval(rightBtnHandler, 2000);
+    });
+
+    //右按钮的点击
+    $(".right_btn").click(rightBtnHandler);
+    //右按钮的事件处理函数
+    function rightBtnHandler(event) {
+        //防止用户太快的点击，如果用户在很快的点击，并且不是上帝
+        if ($("ul li").is(":animated") && !god) return;
+        //数组的轮换
+        posArr.unshift(posArr.pop());
+        zindexArr.unshift(zindexArr.pop());
+        maskArr.unshift(maskArr.pop());
+
+        //设置每一个li为当前数组中的那个位置
+        setEveryLiByArr();
+
+        //让信号量改变，因为信号量不驱动大图变化，所以信号量可以写在后面
+        idx++;
+        if (idx > 10) {
+            idx = 0;
+        }
+        //小圆点
+        $("ol li").eq(idx).addClass('cur').siblings().removeClass('cur');
+    }
+
+    //左按钮的点击
+    $(".left_btn").click(function() {
+        //防止用户太快的点击
+        if ($("ul li").is(":animated") && !god) return;
+        //数组的轮寻，我们的MVC：most valueble content，最有价值语句：
+        posArr.push(posArr.shift());
+        zindexArr.push(zindexArr.shift());
+        maskArr.push(maskArr.shift());
+
+        //设置每一个li为当前数组中的那个位置
+        setEveryLiByArr();
+
+        idx--;
+        if (idx < 0) {
+            idx = 10;
+        }
+        //小圆点
+        $("ol li").eq(idx).addClass('cur').siblings().removeClass('cur');
+    });
+
+    //小圆点的点击事件
+    $("ol li").click(function() {
+        //得到用户点击的小圆点的下标
+        var _idx = $(this).index();
+        //看看和现在的idx谁大谁小
+        if (_idx > idx) {
+            //差了多少
+            var count = _idx - idx;
+            //模拟触发右按钮的点击事件
+            //上帝来了
+            god = true;
+            while (count--) {
+                //模拟点击右按钮，trigger就是模拟触发click事件
+                $(".right_btn").trigger("click");
+            }
+            //上帝走了
+            god = false;
+        } else if (_idx < idx) {
+            //差了多少
+            var count = idx - _idx;
+            //模拟触发右按钮的点击事件
+            //上帝来了
+            god = true;
+            while (count--) {
+                //模拟点击左按钮，trigger就是模拟触发click事件
+                $(".left_btn").trigger("click");
+            }
+            //上帝走了
+            god = false;
+
+        }
+    });
+    // 设置每一个li为当前数组中的那个位置
+    function setEveryLiByArr() {
+        //动画持续时间
+        var during = god ? 80 : 800;
+        //遍历每一个li，让每一个li以动画形式改变为此时数组对应项那项
+        $("ul li").each(function(index) {
+            $(this).css("z-index", zindexArr[index]);
+            $(this).animate(posArr[index], during);
+            $(this).find(".mask").animate({
+                "opacity": maskArr[index]
+            }, during);
+        });
+    }
+</script>

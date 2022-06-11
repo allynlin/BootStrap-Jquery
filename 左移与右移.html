@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>左移与右移</title>
+    <style>
+        #leftSelect, #rightSelect {
+            width: 100px;
+            height: 150px;
+        }
+
+        #center {
+            float: left;
+            width: 50px;
+            height: 150px;
+            padding-top: 50px;
+            padding-left: 20px;
+        }
+        button{
+            width: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div style="float: left;">
+    可选项<br/>
+    <select multiple="multiple" id="leftSelect">
+        <option>添加</option>
+        <option>移动</option>
+        <option>修改</option>
+        <option>查询</option>
+        <option>打印</option>
+        <option>删除</option>
+    </select>
+    <br/>
+
+</div>
+<div id="center">
+    <button id="a1"> &gt; </button> <br/>
+    <button id="a2"> &gt;&gt; </button> <br/>
+    <button id="a3"> &lt;</button> <br/>
+    <button id="a4"> &lt;&lt; </button>
+</div>
+<!--右边-->
+<div style="float: left;">
+    已选项<br/>
+    <select multiple="multiple" id="rightSelect">
+    </select>
+    <br/>
+
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        $("#a1").click(function () {
+            //找到被选中的那一项
+            //将被选中项添加到右边
+            $("#rightSelect").append($("#leftSelect option:selected"));
+        });
+
+        //将左边所有商品移动到右边
+        $("#a2").click(function () {
+            $("#rightSelect").append($("#leftSelect option"));
+        });
+
+        //将右边所有商品移动到左边
+        $("#a3").click(function () {
+            $("#leftSelect").append($("#rightSelect option:selected"));
+        });
+        // 将右边所有商品移动到左边
+        $("#a4").click(function () {
+            $("#leftSelect").append($("#rightSelect option"));
+        });
+
+    });
+</script>
