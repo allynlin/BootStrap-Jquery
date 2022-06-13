@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/white-pink.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>jQuery 同胞遍历 next()、nextAll()、nextUntil() 方法的应用</title>
+    <style>
+        div {
+            width: 300px;
+        }
+
+        span {
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        div,
+        ul,
+        p,
+        li,
+        span {
+            border: 1px solid gray;
+            padding: 10px;
+            margin: 10px;
+            background-color: white;
+        }
+        .mark{
+            border: 1px solid gray;
+            padding: 10px;
+            margin: 10px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<h3>jQuery 同胞遍历 next()、nextAll()、nextUntil() 方法的应用</h3>
+<hr>
+<div>
+    曾祖父div
+    <ul>
+        父元素ul
+        <li class="style01">元素li</li>
+        <li>元素li</li>
+        <li>元素li</li>
+        <li class="style01">元素li</li>
+        <li>元素li</li>
+    </ul>
+</div>
+<button id="btn01">$("li:eq(0)").next()</button>
+<button id="btn02">$("li:eq(0)").nextAll()</button>
+<button id="btn03">$("li:eq(0)").nextUntil("li:eq(3)")</button>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        // 按钮1的点击事件：标记第一个li元素的下一个同辈元素
+        $("#btn01").click(function () {
+            $("li:eq(0)").nextAll().removeClass("mark");
+            $("li:eq(0)").next().addClass("mark");
+        });
+        // 按钮2的点击事件：标记第一个li元素的后面所有同辈元素
+        $("#btn02").click(function () {
+            $("li:eq(0)").nextAll().addClass("mark");
+        });
+        // 按钮3的点击事件：标记第一个li元素之后、第四个元素之前的所有同辈元素
+        $("#btn03").click(function () {
+            $("li:eq(0)").nextAll().removeClass("mark");
+            $("li:eq(0)").nextUntil("li:eq(3)").addClass("mark");
+        });
+    });
+</script>

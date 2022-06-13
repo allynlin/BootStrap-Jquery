@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/white-pink.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>jQuery 同胞遍历 prev()、prevAll()、prevUntil() 方法的应用</title>
+    <style>
+        div {
+            width: 300px;
+        }
+
+        span {
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        div,
+        ul,
+        p,
+        li,
+        span {
+            border: 1px solid gray;
+            padding: 10px;
+            margin: 10px;
+            background-color: white;
+        }
+        .mark{
+            border: 1px solid gray;
+            padding: 10px;
+            margin: 10px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<h3>jQuery 同胞遍历 prev()、prevAll()、prevUntil() 方法的应用</h3>
+<hr>
+<div>
+    曾祖父div
+    <ul>
+        父元素ul
+        <li class="style01">元素li</li>
+        <li>元素li</li>
+        <li>元素li</li>
+        <li class="style01">元素li</li>
+        <li>元素li</li>
+    </ul>
+</div>
+<button id="btn01">$("li:last").prev()</button>
+<button id="btn02">$("li:last").prevAll()</button>
+<button id="btn03">$("li:last").prevUntil("li:eq(1)")</button>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $("#btn01").click(function () {
+            $("li:last").prevAll().removeClass("mark");
+            $("li:last").prev().addClass("mark");
+        });
+        $("#btn02").click(function () {
+            $("li:last").prevAll().addClass("mark");
+        });
+        $("#btn03").click(function () {
+            $("li:last").prevAll().removeClass("mark");
+            $("li:last").prevUntil("li:eq(1)").addClass("mark");
+        });
+    });
+</script>
