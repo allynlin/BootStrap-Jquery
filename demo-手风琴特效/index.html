@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/white-pink.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta content="light dark" name="color-scheme">
+    <title>手风琴特效</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #eee
+        }
+
+        .accordion {
+            width: 900px;
+            height: 300px;
+            border: 1px solid black;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .accordion ul {
+            list-style: none;
+        }
+
+        .accordion ul li {
+            position: absolute;
+        }
+
+        .no0 {
+            left: 0;
+        }
+
+        .no1 {
+            left: 180px;
+        }
+
+        .no2 {
+            left: 360px;
+        }
+
+        .no3 {
+            left: 540px;
+        }
+
+        .no4 {
+            left: 720px;
+        }
+
+        .mask {
+            position: absolute;
+            width: 560px;
+            height: 300px;
+            background-color: black;
+            top: 0;
+            left: 0;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+
+<body>
+<div class="accordion">
+    <ul>
+        <li class="no0">
+            <div class="mask"></div>
+            <a href=""><img src="images/0.jpg" alt=""></a>
+        </li>
+        <li class="no1">
+            <div class="mask"></div>
+            <a href=""><img src="images/1.jpg" alt=""></a>
+        </li>
+        <li class="no2">
+            <div class="mask"></div>
+            <a href=""><img src="images/2.jpg" alt=""></a>
+        </li>
+        <li class="no3">
+            <div class="mask"></div>
+            <a href=""><img src="images/3.jpg" alt=""></a>
+        </li>
+        <li class="no4">
+            <div class="mask"></div>
+            <a href=""><img src="images/4.jpg" alt=""></a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>
+<script>
+    // 动画时间
+    let during = 300;
+    // 给每个li添加监听事件
+    $(".accordion ul li").mouseenter(function () {
+        // 获取当前li的索引
+        let index = $(this).index();
+        // 小于等于当前li序号的元素，应该向左移动
+        $(".accordion ul li:lt(" + (index + 1) + ")").each(function (i) {
+            $(this).stop().animate({
+                left: i * 85
+            }, during);
+        });
+        // 大于当前li序号的元素，应该向右移动
+        $(".accordion ul li:gt(" + index + ")").each(function (i) {
+            $(this).stop().animate({
+                left: 650 + (i + index) * 85
+            }, during);
+        });
+        // 碰到的li变亮，其他的变暗
+        $(this).children(".mask").stop().fadeOut();
+        $(this).siblings().children(".mask").stop().fadeIn();
+        // 当鼠标移出时，所有的li应该还原
+        $(".accordion").mouseleave(function () {
+            $(".accordion ul li").each(function (i) {
+                $(this).stop().animate({
+                    left: i * 180
+                }, during);
+            });
+            $(".accordion ul li .mask").stop().fadeIn();
+        });
+    })
+</script>
